@@ -6,10 +6,13 @@ import { subscribe } from './state.js';
 import { startChannel } from './channel.js';
 import { landing } from './views/landing.js';
 import { bookPage, bookedPage } from './views/book.js';
+import { checkinPage, slipPage } from './views/checkin.js';
 
 addRoute('/', landing);
 addRoute('/book', bookPage);
 addRoute('/booked/:id', bookedPage);
+addRoute('/checkin', checkinPage);
+addRoute('/slip/:id', slipPage);
 
 subscribe(() => refresh());
 startChannel();
