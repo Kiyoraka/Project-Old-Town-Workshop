@@ -1,1 +1,96 @@
-/* Old Town Workshop — invoice styles. */
+/* Old Town Workshop — the invoice sheet (laid out like the client's sample) and its A4 print. */
+
+.inv-page-wrap { padding-top: 20px; padding-bottom: 28px; display: grid; gap: 14px; justify-items: center; }
+.inv-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+
+.invoice {
+  position: relative; overflow: hidden;
+  width: 100%; max-width: 794px;            /* A4 at 96 dpi */
+  min-height: 860px;                        /* a page's worth of paper, so the PAID band sits in the blank corner */
+  background: #fff; color: #222;
+  padding: 36px 40px 56px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(35, 32, 28, 0.16), 0 0 0 1px var(--rule);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.inv-head { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: start; padding-bottom: 18px; border-bottom: 1px solid #ddd; }
+.inv-mark {
+  display: inline-grid; line-height: 1; padding: 6px 10px 5px; margin-bottom: 10px;
+  font-family: var(--font-sign); font-size: 1.1rem; letter-spacing: 0.04em; color: var(--on-brand);
+  background: var(--rust); border-radius: 3px;
+  box-shadow: inset 0 0 0 2px var(--rust), inset 0 0 0 3px rgba(255, 248, 236, 0.7);
+}
+.inv-mark small { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.32em; text-align: center; margin-top: 3px; }
+.inv-title { font-family: var(--font-body); font-weight: 400; font-size: 1.6rem; margin: 0; color: #222; }
+.inv-no { margin: 0; font-size: 1.05rem; color: #333; }
+.inv-qr { display: grid; justify-items: center; gap: 4px; font-size: 0.72rem; color: #888; }
+.inv-qr .qr { width: 104px; border: 0; padding: 0; }
+.inv-shop { display: grid; justify-items: end; text-align: right; gap: 1px; color: #333; }
+.inv-shop b { font-size: 1.05rem; color: #111; }
+.inv-address { max-width: 260px; margin-top: 8px; }
+
+.inv-meta { display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid #ddd; }
+.inv-meta dl { margin: 0; display: grid; gap: 8px; }
+.inv-meta dl div { display: grid; grid-template-columns: 90px 1fr; align-items: baseline; gap: 10px; }
+.inv-meta dt { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #999; }
+.inv-meta dd { margin: 0; font-size: 1.02rem; color: #222; }
+.inv-meta dd small { color: #888; font-size: 0.8rem; }
+.inv-dates div { grid-template-columns: 60px auto; }
+.inv-dates dt { text-align: right; }
+
+.inv-items { padding: 16px 0 6px; }
+.inv-label { font-weight: 700; font-size: 0.85rem; margin: 0 0 10px; }
+.inv-item { display: flex; justify-content: space-between; gap: 16px; padding: 0 22px 12px; margin-bottom: 12px; border-bottom: 1px solid #e6e6e6; }
+.inv-item b { display: block; font-weight: 700; }
+.inv-item span { display: block; font-size: 0.82rem; color: #555; padding-left: 22px; }
+.inv-amount { text-align: right; white-space: nowrap; }
+.inv-amount s { display: block; color: #888; font-size: 0.85rem; }
+.inv-amount span { padding-left: 0; font-size: 0.92rem; color: #333; }
+
+.inv-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 10px; align-items: start; }
+.inv-payments { display: flex; gap: 14px; }
+.inv-payments ol { margin: 0; padding-left: 18px; }
+.inv-payments li span { display: block; font-size: 0.82rem; color: #555; }
+.inv-totals { margin: 0; display: grid; gap: 6px; }
+.inv-totals div { display: flex; justify-content: space-between; gap: 12px; }
+.inv-totals dt { font-weight: 500; }
+.inv-totals dd { margin: 0; font-variant-numeric: tabular-nums; }
+.inv-total { padding-top: 6px; margin-top: 4px; }
+.inv-total dt { font-size: 1.1rem; font-weight: 700; }
+.inv-total dd { font-size: 1.7rem; font-weight: 700; color: #111; }
+
+.inv-page { position: absolute; left: 0; right: 0; bottom: 16px; text-align: center; margin: 0; font-size: 0.75rem; color: #888; }
+/* The diagonal PAID band across the bottom-right corner. */
+.inv-stamp {
+  position: absolute; right: -58px; bottom: 34px; width: 240px; transform: rotate(-45deg);
+  display: grid; justify-items: center; padding: 4px 0;
+  border-top: 2px solid #6FAE6A; border-bottom: 2px solid #6FAE6A;
+  color: #4E8F49; font-weight: 700; letter-spacing: 0.14em; line-height: 1.1;
+}
+.inv-stamp span { font-size: 1rem; }
+.inv-stamp small { font-size: 0.62rem; letter-spacing: 0.06em; font-weight: 500; }
+
+@media (max-width: 640px) {
+  .invoice { padding: 22px 16px 56px; font-size: 13px; min-height: 0; padding-bottom: 120px; }
+  .inv-head { grid-template-columns: 1fr auto; }
+  .inv-shop { grid-column: 1 / -1; justify-items: start; text-align: left; }
+  .inv-meta { flex-direction: column; }
+  .inv-dates dt { text-align: left; }
+  .inv-item { padding: 0 0 12px; }
+  .inv-item span { padding-left: 10px; }
+  .inv-foot { grid-template-columns: 1fr; }
+}
+
+/* ---------- print: one clean A4 page, nothing but the sheet ---------- */
+@media print {
+  @page { size: A4; margin: 10mm; }
+  body { background: #fff !important; }
+  .site-head, .public-footer, .inv-actions, .no-print, .admin-top, .dock, .toast { display: none !important; }
+  .inv-page-wrap { padding: 0; }
+  .invoice { max-width: none; min-height: 270mm; box-shadow: none; border-radius: 0; padding: 0 0 40px; }
+  .inv-stamp { right: -60px; bottom: 30px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
