@@ -139,7 +139,7 @@ body[data-surface="admin"] { background-color: var(--paper-2); }
 .data-table td { padding: 10px; border-bottom: 1px solid var(--rule-soft); vertical-align: middle; }
 .data-table tbody tr:hover td { background: rgba(233, 223, 203, 0.45); }
 .data-table .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.data-table .sku { font-family: var(--font-mono); font-size: 0.84rem; color: var(--ink-soft); }
+.data-table .sku { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft); white-space: nowrap; }
 .cell-sub { display: block; font-size: 0.82rem; color: var(--muted); }
 .cell-actions { white-space: nowrap; text-align: right; }
 .table-empty { text-align: center; padding: 20px 0; color: var(--muted); }
@@ -356,3 +356,8 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
 .slot-booking.is-checked-in { border-left-color: var(--st-ready); }
 .slot-service { color: var(--ink-soft); line-height: 1.25; }
 .slot-lunch td { text-align: center; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); background: repeating-linear-gradient(135deg, var(--paper-2) 0 6px, transparent 6px 12px); border-radius: var(--radius-sm); padding: 6px; }
+
+/* ---------- inventory ---------- */
+.move-qty { min-width: 44px; text-align: right; }
+.move-qty.is-in { color: #2B6B41; }
+.move-qty.is-out { color: var(--rust-deep); }
