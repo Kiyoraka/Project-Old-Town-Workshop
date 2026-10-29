@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Old Town Workshop — Workshop POS, Bookings &amp; Invoices</title>
+  <meta name="description" content="Old Town Workshop runs a small workshop from one screen: customers book a slot and check in by QR, every job moves from inspection to ready, parts come out of inventory, and the invoice reaches WhatsApp in one tap after payment.">
+  <meta name="theme-color" content="#B5541C">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Old Town Workshop — Workshop POS, Bookings & Invoices">
+  <meta property="og:description" content="Book a slot, check in by QR, follow the job, pay, and get the invoice on WhatsApp in one tap.">
+  <meta property="og:image" content="assets/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Courier+Prime:wght@400;700&family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/invoice.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+  <div id="app"></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <div id="announcer" class="sr-only" aria-live="polite"></div>
+  <noscript>Old Town Workshop needs JavaScript turned on to show bookings, jobs and invoices.</noscript>
+  <script src="js/vendor/qrcode-generator.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
