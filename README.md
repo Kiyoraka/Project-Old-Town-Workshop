@@ -51,10 +51,24 @@ The back office (`#/admin`) accepts **any** email address and **any** password. 
 - **WhatsApp is one tap, not automatic.** After payment, *Send to WhatsApp* opens WhatsApp with the message and invoice link already typed. Sending with no tap at all needs the WhatsApp Business API, which is a phase-2 cost.
 - **The payment gateway is a demo.** DuitNow QR, FPX, card terminal and cash all end in a paid invoice; no money moves and no card details are asked for.
 
+## Install it as an app
+
+The mockup is a Progressive Web App. On its live (https) address:
+
+- **Android / desktop Chrome**: tap **Install the app** on the landing page or in *Settings*, or use the browser menu › *Install app*.
+- **iPhone (Safari)**: *Share* › *Add to Home Screen*.
+
+Installed, it opens full screen from the rust Old Town icon, the customer side has a bottom tab bar on the phone (Home · Book · Check in · My job · Staff), and it keeps working without signal: every file is cached by `sw.js`.
+
+**On every deploy, bump `CACHE` in `sw.js`** (`otw-v2` → `otw-v3` …). The new build is then cached in one piece and replaces the old one; without the bump, installed phones keep the old app. A file added to the app also goes into `APP_SHELL` there.
+
 ## Files
 
 ```
-index.html            page shell, fonts, OG tags
+index.html            page shell, fonts, OG tags, manifest + Apple meta
+manifest.webmanifest  the installable app: name, icons, standalone, shortcuts
+sw.js                 offline cache (bump CACHE on every deploy)
+js/pwa.js             service worker registration + install prompt
 css/                  base (theme tokens), public, invoice (+ print), admin, mobile
 js/main.js            routes
 js/router.js          hash router
@@ -66,4 +80,5 @@ js/share.js           snapshot links + WhatsApp links
 js/qr.js              QR codes (js/vendor/qrcode-generator.js, MIT)
 js/views/             customer pages; js/views/admin/ back office
 assets/images/        renders (WebP) + og-cover.jpg
+assets/icons/         app icons (192, 512, maskable, Apple)
 ```

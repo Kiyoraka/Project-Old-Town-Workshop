@@ -6,7 +6,7 @@ import { html, fmtRM, fmtSlot } from '../ui.js';
 import { STATE, bayBoard } from '../state.js';
 import { qrSvg } from '../qr.js';
 import { absUrl } from '../share.js';
-import { publicHeader, publicFooter } from './public.js';
+import { publicHeader, publicFooter, installChip } from './public.js';
 import { icon } from './icons.js';
 
 const CATEGORY_COPY = {
@@ -57,6 +57,7 @@ export const landing = {
               <a class="btn btn-outline btn-lg" href="#/checkin">${icon('qr')} I'm here: check in</a>
               <a class="btn btn-ghost btn-lg" href="#/track">${icon('search')} Track my job</a>
             </div>
+            ${installChip()}
           </div>
           <figure class="hero-figure">
             <img src="assets/images/hero-workshop.webp" alt="The Old Town Workshop shophouse in late sun, patina shutters up and a white hatchback on the lift" width="1200" height="800" onerror="this.remove()">

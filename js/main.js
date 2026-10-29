@@ -1,7 +1,8 @@
 // Boot: register routes, re-render on every state change, then start the tab channel and the
 // router.
 
-import { addRoute, startRouter, refresh } from './router.js';
+import { addRoute, startRouter, refresh, addGlobalHandlers } from './router.js';
+import { startPwa, onInstallChange, promptInstall } from './pwa.js';
 import { subscribe } from './state.js';
 import { startChannel } from './channel.js';
 import { landing } from './views/landing.js';
@@ -42,5 +43,8 @@ addRoute('/admin/settings', settingsPage);
 addRoute('/admin/checkin-stand', checkinStandPage);
 
 subscribe(() => refresh());
+addGlobalHandlers({ actions: { install() { promptInstall(); } } });
+onInstallChange(() => refresh({ force: true }));
+startPwa();
 startChannel();
 startRouter(document.getElementById('app'));

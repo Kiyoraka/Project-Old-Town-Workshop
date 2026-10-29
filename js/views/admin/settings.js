@@ -9,6 +9,7 @@ import { qrSvg } from '../../qr.js';
 import { absUrl, invoiceWaText } from '../../share.js';
 import { icon } from '../icons.js';
 import { adminPage } from './layout.js';
+import { installState } from '../../pwa.js';
 
 let confirmReset = false;
 
@@ -90,6 +91,17 @@ export const settingsPage = adminPage({
             <p class="small muted">Print this on the counter stand. Customers scan it to check in without queueing; the link opens ${absUrl('/checkin')}.</p>
           </div>
           <a class="btn btn-outline" href="#/admin/checkin-stand">${icon('printer')} Open printable stand (A5)</a>
+        </section>
+
+        <section class="card stack">
+          <div class="card-head"><h2 class="sign-title">${icon('download', { size: 18 })} Install as an app</h2></div>
+          <p class="muted small">On a phone the workshop opens full screen from its own icon, with the tab bar at the bottom, and keeps working without signal.</p>
+          ${{
+            installed: html`<p class="status status-ready">Running as an installed app</p>`,
+            prompt: html`<button class="btn btn-patina" data-action="install">${icon('download')} Install the app</button>`,
+            ios: html`<p class="small">On iPhone: tap <b>Share</b>, then <b>Add to Home Screen</b>.</p>`,
+            none: html`<p class="small">Open this page in Chrome on Android (menu › Install app) or Safari on iPhone (Share › Add to Home Screen). The browser offers it once the site is on its live address.</p>`,
+          }[installState()]}
         </section>
 
         <section class="card stack danger-card">

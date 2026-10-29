@@ -3,6 +3,8 @@
 
 import { html, fmtSlot } from '../ui.js';
 import { STATE, statusLabel } from '../state.js';
+import { installState } from '../pwa.js';
+import { icon } from './icons.js';
 
 export function publicHeader({ strip = '' } = {}) {
   return html`
@@ -42,4 +44,16 @@ export function statusPill(status) {
 export function bookingPill(status) {
   const label = { pending: 'Pending', confirmed: 'Confirmed', 'checked-in': 'Checked in', cancelled: 'Cancelled' }[status] || status;
   return html`<span class="status status-${status === 'checked-in' ? 'checked-in' : status}">${label}</span>`;
+}
+
+// "Install app" when the browser offers it, the Share hint on an iPhone, nothing once installed.
+export function installChip() {
+  const state = installState();
+  if (state === 'prompt') {
+    return html`<button class="install-chip" data-action="install">${icon('download', { size: 16 })} Install the app</button>`;
+  }
+  if (state === 'ios') {
+    return html`<p class="install-hint">${icon('download', { size: 16 })} Add to your home screen: tap <b>Share</b>, then <b>Add to Home Screen</b>.</p>`;
+  }
+  return '';
 }

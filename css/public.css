@@ -147,3 +147,13 @@
 .work-list li { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--rule); }
 .work-list li span:first-child { font-family: var(--font-mono); color: var(--muted); min-width: 2.2em; }
 .asof { font-size: 0.84rem; color: var(--brass-deep); background: rgba(201, 161, 59, 0.16); border-radius: var(--radius-sm); padding: 8px 10px; }
+
+/* ---------- install the app ---------- */
+.install-chip {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+  padding: 8px 14px; border-radius: var(--radius-pill); cursor: pointer;
+  border: 1.5px dashed var(--brass-deep); background: rgba(201, 161, 59, 0.14); color: var(--brass-deep);
+  font-weight: 700; font-size: 0.9rem;
+}
+.install-chip:hover { background: rgba(201, 161, 59, 0.26); }
+.install-hint { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 0.88rem; color: var(--brass-deep); }
