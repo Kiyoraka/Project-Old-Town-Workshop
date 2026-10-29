@@ -1,1 +1,46 @@
-/* Old Town Workshop — mobile styles. */
+/* Old Town Workshop — phone pass: 16 px gutters, no sideways scroll, the dock never covers content. */
+
+@media (max-width: 559px) {
+  .signboard-inner { min-height: 56px; }
+  .signboard-name { font-size: 1.02rem; padding: 3px 12px; }
+  .signboard-tag { display: none; }
+  .strip { font-size: 0.72rem; letter-spacing: 0.06em; padding: 6px 12px; }
+  .display { font-size: 2.3rem; }
+  .hero-lead { font-size: 1rem; }
+  .sign-title { font-size: 1.3rem; }
+
+  /* customer flows */
+  .flow { padding-top: 16px; }
+  .qr-row { grid-template-columns: 112px 1fr; }
+  .qr-row .qr { width: 112px; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .slot-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-option { padding: 10px 12px; }
+  .tracker-head .plate-lg { font-size: 1.1rem; }
+  .stepper li { font-size: 0.66rem; }
+  .code-line { font-size: 1.35rem; }
+
+  /* admin */
+  .kpi-value { font-size: 1.5rem; }
+  .kpi { padding: 12px 12px 12px 16px; }
+  .card { padding: 14px; }
+  .admin-main { padding-top: 14px; gap: 12px; }
+  .job-head-car .plate-lg { font-size: 1.1rem; }
+  .line-total { min-width: 74px; font-size: 0.86rem; }
+  .gw-tabs { grid-template-columns: repeat(2, 1fr); }
+  .rev-amount { display: none; }
+  .stage-bars a { grid-template-columns: 104px 1fr 22px; }
+  .list-time { min-width: 0; }
+}
+
+@media (max-width: 559px) {
+  .kpi-value { font-size: clamp(1.15rem, 6vw, 1.5rem); overflow-wrap: anywhere; }
+  .admin-brand { display: none; }
+  .admin-title { font-size: 1.15rem; }
+  .line:has(.qty) { flex-wrap: wrap; }
+  .line:has(.qty) .line-name { flex-basis: 100%; }
+  .line .qty { margin-right: auto; }
+  .job-head-car .slip-no { font-size: 1.1rem; }
+  .board-chips .chip { min-width: 0; font-size: 0.82rem; }
+  .co-total dd { font-size: 1.5rem; }
+}
