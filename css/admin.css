@@ -317,3 +317,23 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
 .gw-processing { display: grid; justify-items: center; gap: 12px; padding: 28px 0; }
 .gw-spinner { width: 44px; height: 44px; border-radius: 50%; border: 4px solid var(--rule); border-top-color: var(--rust); animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- paid screen ---------- */
+.paid-card { display: grid; justify-items: center; text-align: center; gap: 8px; padding: 28px 16px; border-top: 6px solid var(--st-ready); }
+.paid-card p { margin: 0; }
+.paid-mark { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--st-ready); color: #fff; box-shadow: 0 0 0 8px rgba(63, 143, 90, 0.15); }
+.paid-mark .icon { width: 34px; height: 34px; stroke-width: 2.6; }
+.paid-amount { font-family: var(--font-sign); font-size: clamp(2.2rem, 8vw, 3.2rem); line-height: 1; }
+.paid-wa { margin-top: 8px; min-width: min(100%, 320px); font-size: 1.1rem; }
+.paid-preview { width: 100%; max-width: 520px; text-align: left; }
+.paid-preview summary { cursor: pointer; font-size: 0.88rem; color: var(--patina-deep); text-align: center; }
+.paid-preview pre { white-space: pre-wrap; word-break: break-all; font-family: var(--font-body); font-size: 0.86rem; background: #E7F5E4; border-radius: 10px 10px 10px 2px; padding: 10px 12px; margin: 8px 0 0; }
+.paid-actions { justify-content: center; margin-top: 6px; }
+.paid-note { display: flex; gap: 6px; align-items: flex-start; max-width: 520px; font-size: 0.8rem; color: var(--muted); text-align: left; margin-top: 6px !important; }
+.paid-sheet { display: grid; justify-items: center; }
+@media print {
+  .no-print { display: none !important; }
+  body[data-surface="admin"] { background: #fff !important; }
+  .admin-main { padding: 0 !important; display: block; }
+  .paid-sheet .invoice { max-width: none; min-height: 270mm; box-shadow: none; padding: 0 0 40px; }
+}
