@@ -225,6 +225,7 @@ p { margin: 0 0 1em; }
 .status-ready { background: rgba(63, 143, 90, 0.16); color: #2B6B41; }
 .status-paid { background: rgba(35, 32, 28, 0.1); color: var(--ink); }
 .status-confirmed { background: rgba(47, 111, 106, 0.14); color: var(--patina-deep); }
+.status-pending { background: rgba(201, 161, 59, 0.22); color: var(--brass-deep); }
 .status-cancelled { background: rgba(122, 113, 102, 0.16); color: var(--muted); text-decoration: line-through; }
 .status-low { background: rgba(184, 50, 42, 0.13); color: var(--low); }
 
