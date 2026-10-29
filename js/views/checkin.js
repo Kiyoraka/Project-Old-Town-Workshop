@@ -10,6 +10,7 @@ import { qrSvg } from '../qr.js';
 import { jobLink } from '../share.js';
 import { publicHeader, publicFooter, plate } from './public.js';
 import { icon } from './icons.js';
+import { rememberJob } from './guest-dock.js';
 
 let draft = { query: '', model: '', name: '', phone: '', serviceId: '', notes: '' };
 let errors = {};
@@ -58,6 +59,7 @@ function walkInField(name, label, type = 'text') {
 
 export const checkinPage = {
   title: 'Check in',
+  dock: 'checkin',
   render() {
     const code = queryParam('code');
     if (code && code !== lastCode) { draft.query = code; lastCode = code; }
@@ -130,6 +132,7 @@ export const checkinPage = {
         result = checkIn({ plate: plateText, model: draft.model, name: draft.name, phone: draft.phone, serviceId: draft.serviceId, notes: draft.notes });
       }
       draft = { query: '', model: '', name: '', phone: '', serviceId: '', notes: '' };
+      rememberJob(result.job.id);
       navigate(`/slip/${result.job.id}`);
     },
   },
@@ -137,6 +140,7 @@ export const checkinPage = {
 
 export const slipPage = {
   title: 'Check-in slip',
+  dock: 'checkin',
   render({ id }) {
     const job = jobById(id);
     if (!job) {

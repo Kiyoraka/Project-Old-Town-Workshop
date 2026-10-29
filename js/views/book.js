@@ -49,6 +49,7 @@ function field(name, label, { type = 'text', cls = '', hint = '', autocomplete =
 
 export const bookPage = {
   title: 'Book a slot',
+  dock: 'book',
   render() {
     const days = bookableDays();
     if (!draft.date) draft.date = days.find((d) => slotsFor(d).some((s) => s.free.length)) || days[0];
@@ -159,6 +160,7 @@ export const bookPage = {
 
 export const bookedPage = {
   title: 'Booked',
+  dock: 'book',
   render({ id }) {
     const booking = bookingById(id);
     if (!booking) {

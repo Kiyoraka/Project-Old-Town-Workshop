@@ -40,6 +40,7 @@ function serviceCards() {
 }
 
 export const landing = {
+  dock: 'home',
   render() {
     const board = bayBoard();
     const busy = board.filter((b) => b.job).length;

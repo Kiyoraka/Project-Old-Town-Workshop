@@ -11,6 +11,7 @@ import { queryParam, navigate, refresh } from '../router.js';
 import { decode, expandJob, preferLive } from '../share.js';
 import { publicHeader, publicFooter, plate, statusPill } from './public.js';
 import { icon } from './icons.js';
+import { rememberJob } from './guest-dock.js';
 
 function liveView(job) {
   return {
@@ -56,11 +57,13 @@ const expired = (id) => html`
 
 export const jobPage = {
   title: 'Track my job',
+  dock: 'job',
   render({ id }) {
     const live = jobById(id);
     const snap = expandJob(decode(queryParam('d')));
     const view = preferLive(live ? liveView(live) : null, snap && snap.id === id ? snap : null);
     if (!view) return expired(id);
+    rememberJob(view.id, location.hash);   // a slip QR scanned on this phone stays one tap away
     const [headline, detail] = nowLine(view);
     return html`
       ${publicHeader({ strip: `Job ${view.id} · ${statusLabel(view.status)}` })}
@@ -102,6 +105,7 @@ let trackError = '';
 
 export const trackPage = {
   title: 'Track my job',
+  dock: 'job',
   render() {
     return html`
       ${publicHeader({ strip: 'Track my job' })}

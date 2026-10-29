@@ -6,12 +6,14 @@
 //   guard           -> optional (params) => redirect hash (or null) checked before render
 //   mounted         -> optional (root, params) => run after every render (focus, timers)
 //   title           -> optional page title suffix
+//   dock            -> optional active tab of the customer's phone tab bar ('home' | 'book' | …)
 // Query strings ride after the path (#/invoice/INV-OTW-0000078?d=...) and are read with
 // queryParam(); they never take part in matching.
 // State changes call refresh(); it skips while the user is typing or a modal is open,
 // so a change from another tab never wipes a half-filled form.
 
 import { html } from './ui.js';
+import { guestDock } from './views/guest-dock.js';
 
 const routes = [];
 // Handlers that work on every page; a page's own handler wins.
@@ -78,9 +80,11 @@ function render() {
 
   const changedPage = !current || current.view !== found.view || location.hash !== current.hash;
   current = { ...found, hash: location.hash };
-  root.innerHTML = found.view.render(found.params).toString();
+  const page = found.view.render(found.params).toString();
+  root.innerHTML = found.view.dock ? page + guestDock(found.view.dock).toString() : page;
   document.title = found.view.title ? `${found.view.title} · Old Town Workshop` : 'Old Town Workshop — Workshop POS, Bookings & Invoices';
   document.body.dataset.surface = found.view.surface || 'public';
+  document.body.dataset.dock = found.view.dock ? 'guest' : '';
   if (changedPage) window.scrollTo(0, 0);
   found.view.mounted?.(root, found.params);
 }

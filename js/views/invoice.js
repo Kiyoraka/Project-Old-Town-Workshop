@@ -91,6 +91,7 @@ export function invoiceSheet(inv) {
 
 export const invoicePage = {
   title: 'Invoice',
+  dock: 'job',
   surface: 'invoice',
   render({ no }) {
     const snap = expandInvoice(decode(queryParam('d')));
