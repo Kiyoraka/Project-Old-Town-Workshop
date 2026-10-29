@@ -415,12 +415,11 @@ body[data-surface="stand"] { background-color: var(--paper-2); }
 
 /* ---------- settings tabs: one part at a time ---------- */
 .settings-tabs {
-  display: flex; gap: 6px; overflow-x: auto; padding: 4px; scrollbar-width: none;
+  display: flex; flex-wrap: wrap; gap: 6px; padding: 4px;
   background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-md);
 }
-.settings-tabs::-webkit-scrollbar { display: none; }
 .settings-tab {
-  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex: 1 1 auto;
   min-height: 42px; padding: 0 14px; border: 0; border-radius: var(--radius-sm);
   background: transparent; color: var(--ink-soft); font-weight: 500; font-size: 0.9rem; cursor: pointer; white-space: nowrap;
 }
@@ -429,4 +428,24 @@ body[data-surface="stand"] { background-color: var(--paper-2); }
   background: var(--patina); color: var(--on-brand);
   box-shadow: inset 0 0 0 2px var(--patina), inset 0 0 0 3px rgba(255, 248, 236, 0.45);
 }
-.settings-tabs, .settings-panes { max-width: 760px; width: 100%; }
+/* the open card uses the page width; its fields pair up so a wide card never looks stretched */
+.settings-panes > .card { padding: 20px 24px; }
+@media (min-width: 900px) {
+  .settings-panes > form.card { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 20px; align-content: start; }
+  .settings-panes > form.card > .card-head,
+  .settings-panes > form.card > .grid-2,
+  .settings-panes > form.card > .btn,
+  .settings-panes > form.card > .paid-note,
+  .settings-panes > form.card > .paid-preview,
+  .settings-panes > form.card > .switch-row,
+  .settings-panes > form.card > .field:has(textarea),
+  .settings-panes > form.card > .field:has(.radio-list) { grid-column: 1 / -1; }
+  .settings-panes > form.card > .btn { justify-self: end; min-width: 260px; }
+}
+/* phone: the strip scrolls sideways instead of wrapping into rows */
+@media (max-width: 767px) {
+  .settings-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .settings-tabs::-webkit-scrollbar { display: none; }
+  .settings-tab { flex: none; }
+  .settings-panes > .card { padding: 14px; }
+}
