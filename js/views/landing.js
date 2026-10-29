@@ -15,6 +15,7 @@ const CATEGORY_COPY = {
   Alignment: { icon: 'car', text: 'Wheel alignment and balancing on our own bay.', photo: 'assets/images/wheel-alignment.webp', alt: 'A car on the alignment lift with targets clamped to the wheels' },
   Servis: { icon: 'shield', text: 'Engine oil, filters, bushes and links.', photo: 'assets/images/engine-oil-service.webp', alt: 'Fresh engine oil pouring through a funnel' },
   Brek: { icon: 'alert', text: 'Brake pads and fluid, checked on every visit.', photo: 'assets/images/brake-service.webp', alt: 'A new brake pad going into the caliper' },
+  'Tayar & bateri': { icon: 'tyre', text: 'Tyres changed and balanced, punctures fixed, batteries tested and swapped while you wait.', photo: 'assets/images/tyre-battery.webp', alt: 'A new tyre on the wheel balancer with a battery and multimeter on the bench' },
 };
 
 function serviceCards() {

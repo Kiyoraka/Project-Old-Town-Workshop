@@ -4,7 +4,7 @@
 
 import { dayStr, addDays, round2 } from './ui.js';
 
-export const STATE_VERSION = 1;
+export const STATE_VERSION = 2;
 
 export const JOB_STATUSES = [
   { id: 'checked-in', label: 'Checked in', short: 'In' },
@@ -41,6 +41,9 @@ const SERVICES = [
   { id: 'sv-brake', name: 'Brake pad replace (labour)', category: 'Brek', price: 40, minutes: 45 },
   { id: 'sv-bush', name: 'Bush and link replace (labour)', category: 'Servis', price: 50, minutes: 60 },
   { id: 'sv-inspect', name: 'Suspension inspection', category: 'Inspection', price: 20, minutes: 20 },
+  { id: 'sv-tyre', name: 'Tyre change (per tyre, labour)', category: 'Tayar & bateri', price: 10, minutes: 20 },
+  { id: 'sv-puncture', name: 'Puncture repair (plug and patch)', category: 'Tayar & bateri', price: 15, minutes: 20 },
+  { id: 'sv-battery', name: 'Battery swap and charging test', category: 'Tayar & bateri', price: 10, minutes: 15 },
 ];
 
 // [sku, name, brand, fits, qty, min, cost, price]
@@ -69,6 +72,11 @@ const PARTS = [
   ['BRK-PAD-VIF', 'Brake pad front', 'Bendix', 'Toyota Vios / Honda City', 4, 2, 65, 120],
   ['BRK-FLUID', 'Brake fluid DOT4 1L', 'Old Town Select', 'Universal', 6, 3, 15, 35],
   ['WHL-WEIGHT', 'Wheel balancing weights (set)', 'Old Town', 'Universal', 30, 10, 3, 10],
+  ['TYR-185-60R15', 'Tyre 185/60 R15', 'Old Town Select', 'Perodua Myvi / Honda City', 12, 4, 165, 220],
+  ['TYR-175-65R14', 'Tyre 175/65 R14', 'Old Town Select', 'Perodua Axia / Proton Saga', 10, 4, 130, 180],
+  ['BAT-NS40ZL', 'Battery NS40ZL maintenance-free', 'Old Town Select', 'Perodua', 5, 2, 190, 260],
+  ['BAT-NS60', 'Battery NS60 maintenance-free', 'Old Town Select', 'Toyota / Honda', 3, 2, 240, 320],
+  ['VLV-TYRE', 'Tyre valve (piece)', 'Old Town', 'Universal', 40, 10, 1, 3],
 ];
 
 // [plate, model, name, phone]
@@ -153,6 +161,8 @@ export function seed() {
     () => [serviceLine('sv-brake'), partLine('BRK-PAD-MYF')],
     () => [serviceLine('sv-bush', 1, 5), partLine('BUSH-LWR', 2), partLine('LNK-STAB-F')],
     () => [serviceLine('sv-oil'), partLine('OIL-5W30-4L'), partLine('FLT-OIL-T')],
+    () => [serviceLine('sv-tyre', 2), partLine('TYR-185-60R15', 2), partLine('VLV-TYRE', 2), serviceLine('sv-balance')],
+    () => [serviceLine('sv-battery'), partLine('BAT-NS40ZL')],
   ];
 
   const lineNet = (l) => l.qty * l.price - l.discount;
