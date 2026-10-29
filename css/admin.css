@@ -337,3 +337,22 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
   .admin-main { padding: 0 !important; display: block; }
   .paid-sheet .invoice { max-width: none; min-height: 270mm; box-shadow: none; padding: 0 0 40px; }
 }
+
+/* ---------- bookings grid ---------- */
+.pending-card { border-left: 5px solid var(--brass); }
+.slot-table { width: 100%; min-width: 620px; border-collapse: separate; border-spacing: 6px; table-layout: fixed; }
+.slot-table thead th { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--patina-deep); text-align: left; padding: 0 4px; }
+.slot-table thead th:first-child, .slot-table tbody th { width: 84px; }
+.slot-table tbody th { font-size: 0.82rem; color: var(--ink-soft); text-align: left; vertical-align: top; padding-top: 8px; position: sticky; left: 0; background: var(--card); }
+.slot-table td { padding: 0; vertical-align: top; }
+.slot-free span { display: grid; place-items: center; min-height: 64px; border: 1.5px dashed var(--rule); border-radius: var(--radius-sm); color: var(--muted); font-size: 0.78rem; }
+.slot-booking {
+  display: grid; gap: 4px; justify-items: start; width: 100%; min-height: 64px; text-align: left; cursor: pointer;
+  padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--rule); border-left: 5px solid var(--patina); background: #fff; font-size: 0.8rem;
+}
+.slot-booking:hover { box-shadow: var(--raised); }
+.slot-booking .plate { font-size: 0.74rem; }
+.slot-booking.is-pending { border-left-color: var(--brass); background: #FFFBEC; }
+.slot-booking.is-checked-in { border-left-color: var(--st-ready); }
+.slot-service { color: var(--ink-soft); line-height: 1.25; }
+.slot-lunch td { text-align: center; font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); background: repeating-linear-gradient(135deg, var(--paper-2) 0 6px, transparent 6px 12px); border-radius: var(--radius-sm); padding: 6px; }

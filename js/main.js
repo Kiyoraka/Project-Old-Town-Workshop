@@ -15,6 +15,7 @@ import { jobsPage } from './views/admin/jobs.js';
 import { jobCardPage } from './views/admin/job-card.js';
 import { checkoutPage } from './views/admin/checkout.js';
 import { paidPage } from './views/admin/paid.js';
+import { bookingsPage } from './views/admin/bookings.js';
 
 addRoute('/', landing);
 addRoute('/book', bookPage);
@@ -30,6 +31,7 @@ addRoute('/admin/jobs', jobsPage);
 addRoute('/admin/job/:id', jobCardPage);
 addRoute('/admin/checkout/:id', checkoutPage);
 addRoute('/admin/paid/:no', paidPage);
+addRoute('/admin/bookings', bookingsPage);
 
 subscribe(() => refresh());
 startChannel();
