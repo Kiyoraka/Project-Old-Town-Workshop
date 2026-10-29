@@ -5,6 +5,7 @@
 // localStorage copy still catches it up on the next load.
 
 import { onChange, adoptState, STATE } from './state.js';
+import { STATE_VERSION } from './data.js';
 
 let channel = null;
 let applying = false;
@@ -21,6 +22,8 @@ export function startChannel() {
       return;
     }
     if (data?.type !== 'state' || !data.state) return;
+    // A tab still running an older build (or yesterday's seed) must never overwrite this one.
+    if (data.state.version !== STATE_VERSION || data.state.seedDay !== STATE.seedDay) return;
     applying = true;
     try { adoptState(data.state); } finally { applying = false; }
   });
