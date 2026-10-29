@@ -18,6 +18,8 @@ import { paidPage } from './views/admin/paid.js';
 import { bookingsPage } from './views/admin/bookings.js';
 import { inventoryPage } from './views/admin/inventory.js';
 import { staffPage } from './views/admin/staff.js';
+import { settingsPage } from './views/admin/settings.js';
+import { checkinStandPage } from './views/admin/checkin-stand.js';
 
 addRoute('/', landing);
 addRoute('/book', bookPage);
@@ -36,6 +38,8 @@ addRoute('/admin/paid/:no', paidPage);
 addRoute('/admin/bookings', bookingsPage);
 addRoute('/admin/inventory', inventoryPage);
 addRoute('/admin/staff', staffPage);
+addRoute('/admin/settings', settingsPage);
+addRoute('/admin/checkin-stand', checkinStandPage);
 
 subscribe(() => refresh());
 startChannel();

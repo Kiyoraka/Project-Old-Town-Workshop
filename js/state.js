@@ -426,3 +426,8 @@ export function saveSettings(fields) {
   Object.assign(STATE.settings, fields);
   commit();
 }
+
+export function saveBays(bays) {
+  STATE.bays = bays;
+  commit();
+}

@@ -377,3 +377,36 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
 .role ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 0.9rem; }
 .role li { display: flex; gap: 6px; align-items: center; }
 .role li .icon { color: var(--st-ready); }
+
+/* ---------- settings ---------- */
+.settings-grid { display: grid; gap: 16px; }
+@media (min-width: 900px) { .settings-grid { grid-template-columns: 1fr 1fr; align-items: start; } .settings-wide { grid-row: span 2; } }
+.radio-list { display: grid; gap: 8px; }
+.radio-row { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1.5px solid var(--rule); border-radius: var(--radius-sm); background: #fff; cursor: pointer; }
+.radio-row:has(input:checked) { border-color: var(--patina); box-shadow: inset 0 0 0 1px var(--patina); }
+.radio-row input { margin-top: 3px; accent-color: var(--patina); }
+.danger-card { border-top: 4px solid var(--low); }
+
+/* ---------- check-in stand (A5) ---------- */
+body[data-surface="stand"] { background-color: var(--paper-2); }
+.stand-page { display: grid; justify-items: center; gap: 16px; padding: 24px var(--gutter) 40px; }
+.stand-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.stand {
+  width: 100%; max-width: 148mm; min-height: 200mm;
+  display: grid; justify-items: center; align-content: center; gap: 14px; text-align: center;
+  padding: 18mm 12mm; background: var(--paper);
+  border: 3px solid var(--grease); outline: 6px solid var(--rust); outline-offset: -14px;
+  box-shadow: var(--raised);
+}
+.stand-sign { font-size: 1.5rem; background: var(--rust); }
+.stand-tag { margin: 0; font-family: var(--font-mono); letter-spacing: 0.1em; color: var(--ink-soft); }
+.stand-title { font-family: var(--font-sign); font-weight: 400; font-size: 2.6rem; line-height: 1; margin: 8px 0 0; color: var(--rust-deep); }
+.stand-qr { width: 70mm; max-width: 80%; padding: 10px; border-width: 3px; }
+.stand-sub { margin: 0; font-size: 1.05rem; }
+.stand-foot { margin: 0; font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-soft); }
+@media print {
+  @page { size: A5; margin: 0; }
+  body[data-surface="stand"] { background: #fff !important; }
+  .stand-page { padding: 0; }
+  .stand { box-shadow: none; max-width: none; width: 148mm; height: 210mm; min-height: 0; }
+}
