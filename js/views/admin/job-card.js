@@ -136,15 +136,16 @@ export const jobCardPage = adminPage({
       </section>`;
   },
   inputs: {
-    status(el) {
+    status(el, event) {
+      if (event.type !== 'change') return;     // a select fires input and change: act once
       const id = location.hash.split('/').pop();
       setJobStatus(id, el.value);
       toast(`Moved to ${statusLabel(el.value)}`);
       el.blur();
       refresh({ force: true });
     },
-    mechanic(el) { assignMechanic(location.hash.split('/').pop(), el.value); el.blur(); refresh({ force: true }); },
-    bay(el) { setJobBay(location.hash.split('/').pop(), el.value); el.blur(); refresh({ force: true }); },
+    mechanic(el, event) { if (event.type !== 'change') return; assignMechanic(location.hash.split('/').pop(), el.value); el.blur(); refresh({ force: true }); },
+    bay(el, event) { if (event.type !== 'change') return; setJobBay(location.hash.split('/').pop(), el.value); el.blur(); refresh({ force: true }); },
     notes(el, event) { if (event.type === 'change') setJobNotes(location.hash.split('/').pop(), el.value); },
     'part-search'(el) {
       partQuery = el.value.trim().toLowerCase();

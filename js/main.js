@@ -17,6 +17,7 @@ import { checkoutPage } from './views/admin/checkout.js';
 import { paidPage } from './views/admin/paid.js';
 import { bookingsPage } from './views/admin/bookings.js';
 import { inventoryPage } from './views/admin/inventory.js';
+import { staffPage } from './views/admin/staff.js';
 
 addRoute('/', landing);
 addRoute('/book', bookPage);
@@ -34,6 +35,7 @@ addRoute('/admin/checkout/:id', checkoutPage);
 addRoute('/admin/paid/:no', paidPage);
 addRoute('/admin/bookings', bookingsPage);
 addRoute('/admin/inventory', inventoryPage);
+addRoute('/admin/staff', staffPage);
 
 subscribe(() => refresh());
 startChannel();
