@@ -190,7 +190,9 @@ export function etaFor(job) {
   if (!job.checkedInAt) return null;
   const minutes = job.lines.filter((l) => l.kind === 'service')
     .reduce((sum, l) => sum + (serviceById(l.refId)?.minutes || 30) * l.qty, 0) || 45;
-  return new Date(new Date(job.checkedInAt).getTime() + (minutes + 20) * 60000).toISOString();
+  const planned = new Date(job.checkedInAt).getTime() + (minutes + 20) * 60000;
+  // Running late: never promise a time already gone, say "about a quarter of an hour".
+  return new Date(Math.max(planned, Date.now() + 15 * 60000)).toISOString();
 }
 
 // ---------- bookings ----------

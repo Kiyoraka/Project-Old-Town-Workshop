@@ -7,12 +7,15 @@ import { startChannel } from './channel.js';
 import { landing } from './views/landing.js';
 import { bookPage, bookedPage } from './views/book.js';
 import { checkinPage, slipPage } from './views/checkin.js';
+import { jobPage, trackPage } from './views/job.js';
 
 addRoute('/', landing);
 addRoute('/book', bookPage);
 addRoute('/booked/:id', bookedPage);
 addRoute('/checkin', checkinPage);
 addRoute('/slip/:id', slipPage);
+addRoute('/track', trackPage);
+addRoute('/job/:id', jobPage);
 
 subscribe(() => refresh());
 startChannel();
