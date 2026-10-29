@@ -57,7 +57,7 @@ export const landing = {
             </div>
           </div>
           <figure class="hero-figure">
-            <img src="assets/images/hero-workshop.webp" alt="The Old Town Workshop shopfront with its rust shutters half up and a car on the lift" width="1200" height="900" onerror="this.remove()">
+            <img src="assets/images/hero-workshop.webp" alt="The Old Town Workshop shophouse in late sun, patina shutters up and a white hatchback on the lift" width="1200" height="800" onerror="this.remove()">
             <span class="hero-badge badge-brass">${icon('wrench', { size: 14 })} ${busy} of ${board.length} bays busy now</span>
           </figure>
         </section>

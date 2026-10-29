@@ -34,12 +34,12 @@
   box-shadow: inset 0 0 0 2px var(--rust), inset 0 0 0 3px rgba(255, 248, 236, 0.6);
 }
 
-.services { display: grid; gap: 14px; grid-template-columns: 1fr; }
+.services { display: grid; gap: 14px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 640px) { .services { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .services { grid-template-columns: repeat(3, 1fr); } }
 .service-card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-md); overflow: hidden; display: grid; }
 .service-photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 3px solid var(--rust); }
-.service-body { padding: 16px; display: grid; gap: 6px; justify-items: start; }
+.service-body { padding: 16px; display: grid; gap: 6px; justify-items: start; align-content: start; }
 .service-body p { margin: 0 0 6px; }
 .service-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--paper-2); color: var(--rust-deep); }
 .service-name { font-family: var(--font-sign); font-weight: 400; font-size: 1.25rem; margin: 4px 0 0; }

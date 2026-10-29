@@ -27,8 +27,8 @@ export const loginPage = {
     return html`
       <main class="login">
         <figure class="login-photo">
-          <img src="assets/images/login-counter.webp" width="1200" height="1500"
-               alt="The workshop counter at dusk, a job ticket spike and keys on hooks" onerror="this.remove()">
+          <img src="assets/images/login-counter.webp" width="900" height="1350"
+               alt="The workshop counter at dusk: keys on brass hooks, a ticket spike and a payment QR stand" onerror="this.remove()">
           <figcaption class="login-caption"><span class="signboard-name">${STATE.shop.name}</span><span>${STATE.shop.tagline}</span></figcaption>
         </figure>
         <section class="login-panel">
