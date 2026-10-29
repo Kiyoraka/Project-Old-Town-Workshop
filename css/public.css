@@ -38,7 +38,7 @@
 @media (min-width: 640px) { .services { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 960px) { .services { grid-template-columns: repeat(3, 1fr); } }
 .service-card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-md); overflow: hidden; display: grid; }
-.service-photo { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 3px solid var(--rust); }
+.service-photo { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-bottom: 3px solid var(--rust); }
 .service-body { padding: 16px; display: grid; gap: 6px; justify-items: start; align-content: start; }
 .service-body p { margin: 0 0 6px; }
 .service-icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--paper-2); color: var(--rust-deep); }

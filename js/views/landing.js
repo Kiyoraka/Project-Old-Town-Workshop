@@ -12,9 +12,9 @@ import { icon } from './icons.js';
 const CATEGORY_COPY = {
   Absorber: { icon: 'wrench', text: 'Front and rear absorbers, mountings and coilovers, fitted the same day.', photo: 'assets/images/absorber-fitting.webp', alt: 'A mechanic fitting a shock absorber' },
   Restoration: { icon: 'sparkle', text: 'Worn absorbers rebuilt with new seals and oil, for classics and daily cars.', photo: 'assets/images/absorber-restored.webp', alt: 'A reconditioned absorber on a workbench' },
-  Alignment: { icon: 'car', text: 'Wheel alignment and balancing on our own bay.' },
-  Servis: { icon: 'shield', text: 'Engine oil, filters, bushes and links.' },
-  Brek: { icon: 'alert', text: 'Brake pads and fluid, checked on every visit.' },
+  Alignment: { icon: 'car', text: 'Wheel alignment and balancing on our own bay.', photo: 'assets/images/wheel-alignment.webp', alt: 'A car on the alignment lift with targets clamped to the wheels' },
+  Servis: { icon: 'shield', text: 'Engine oil, filters, bushes and links.', photo: 'assets/images/engine-oil-service.webp', alt: 'Fresh engine oil pouring through a funnel' },
+  Brek: { icon: 'alert', text: 'Brake pads and fluid, checked on every visit.', photo: 'assets/images/brake-service.webp', alt: 'A new brake pad going into the caliper' },
 };
 
 function serviceCards() {
