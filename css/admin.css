@@ -1,1 +1,24 @@
-/* Old Town Workshop — admin styles. */
+/* Old Town Workshop — staff sign-in and the admin (top bar + bottom navigation dock, no sidebar). */
+
+/* ---------- login ---------- */
+.login { min-height: 100vh; display: grid; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .login { grid-template-columns: 1.1fr 1fr; } }
+.login-photo { display: none; margin: 0; position: relative; }
+@media (min-width: 900px) {
+  .login-photo {
+    display: block;
+    background:
+      linear-gradient(180deg, transparent 60%, rgba(35, 32, 28, 0.75)),
+      repeating-linear-gradient(180deg, #3A7E78 0 12px, var(--patina-deep) 12px 14px);
+  }
+  .login-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .login-photo::after { content: ""; position: absolute; inset: 0; box-shadow: inset -6px 0 0 var(--rust); pointer-events: none; }
+}
+.login-caption { position: absolute; left: 28px; bottom: 28px; display: grid; gap: 8px; justify-items: start; color: var(--on-brand); font-family: var(--font-mono); z-index: 1; }
+.login-caption .signboard-name { background: var(--rust); }
+.login-panel { display: grid; place-items: center; padding: 32px var(--gutter); }
+.login-card { width: 100%; max-width: 420px; padding: 28px 24px; border-top: 6px solid var(--rust); }
+.login-brand { margin-bottom: 18px; background: var(--rust); font-size: 1.1rem; }
+.login-card .sign-title { font-size: 1.6rem; }
+.login-hint { display: flex; align-items: center; gap: 6px; margin: 14px 0 6px; color: #2B6B41; font-size: 0.9rem; font-weight: 500; }
+.login-back { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; }
