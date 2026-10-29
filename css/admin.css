@@ -246,3 +246,33 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
   .board[data-show="ready"] [data-stage="ready"],
   .board[data-show="paid"] [data-stage="paid"] { display: block; }
 }
+
+/* ---------- job card ---------- */
+.back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.92rem; }
+.job-head { display: grid; gap: 10px; border-top: 5px solid var(--rust); }
+.job-head-car { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.job-head-car .slip-no { font-size: 1.3rem; font-weight: 700; }
+.job-head-meta a { display: inline-flex; align-items: center; gap: 2px; }
+.job-controls { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 640px) { .job-controls { grid-template-columns: 1fr; } }
+.job-grid { display: grid; gap: 16px; }
+@media (min-width: 900px) { .job-grid { grid-template-columns: 1fr 1.3fr; align-items: start; } }
+.card-head .sign-title .icon { vertical-align: -3px; color: var(--rust-deep); }
+.lines { list-style: none; margin: 0 0 12px; padding: 0; }
+.line { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px dashed var(--rule); }
+.line-name { flex: 1; min-width: 0; font-weight: 500; font-size: 0.92rem; }
+.qty { display: inline-flex; align-items: center; gap: 2px; }
+.qty .icon-btn { width: 32px; height: 32px; }
+.qty b { min-width: 22px; text-align: center; font-family: var(--font-mono); }
+.line-total { min-width: 92px; text-align: right; font-family: var(--font-mono); }
+.add-row { display: flex; gap: 8px; }
+.add-row .select { flex: 1; min-height: 40px; }
+.part-picker { display: grid; gap: 8px; margin-top: 4px; }
+.part-list { list-style: none; margin: 0; padding: 0; max-height: 320px; overflow-y: auto; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: #fff; }
+.part-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 8px 10px; border-bottom: 1px solid var(--rule-soft); }
+.part-list li .line-name { flex-basis: 200px; }
+.part-list li b { font-family: var(--font-mono); font-size: 0.88rem; }
+.job-foot { display: grid; gap: 16px; align-items: end; }
+@media (min-width: 900px) { .job-foot { grid-template-columns: 1.5fr 1fr; } }
+.job-total { display: grid; gap: 6px; justify-items: end; text-align: right; }
+@media (max-width: 899px) { .job-total { justify-items: stretch; text-align: left; } }
