@@ -62,7 +62,7 @@ export function adminLayout({ active, title, body }) {
 // Every admin page: guarded, titled, and able to sign out.
 export function adminPage({ active, title, render, actions = {}, inputs = {}, submits = {}, mounted }) {
   return {
-    title: typeof title === 'function' ? 'Admin' : title,
+    title: typeof title === 'function' ? 'Job card' : title,
     surface: 'admin',
     guard: requireAdmin,
     render: (params) => adminLayout({ active, title: typeof title === 'function' ? title(params) : title, body: render(params) }),

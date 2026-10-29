@@ -389,7 +389,7 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
 
 /* ---------- check-in stand (A5) ---------- */
 body[data-surface="stand"] { background-color: var(--paper-2); }
-.stand-page { display: grid; justify-items: center; gap: 16px; padding: 24px var(--gutter) 40px; }
+.stand-page { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 16px; padding: 24px var(--gutter) 40px; }
 .stand-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .stand {
   width: 100%; max-width: 148mm; min-height: 200mm;
@@ -410,3 +410,7 @@ body[data-surface="stand"] { background-color: var(--paper-2); }
   .stand-page { padding: 0; }
   .stand { box-shadow: none; max-width: none; width: 148mm; height: 210mm; min-height: 0; }
 }
+
+/* Grid children never grow past the page: wide tables scroll inside their own wrapper. */
+.admin-main > *, .settings-grid > *, .dash-row > *, .job-grid > *, .co-grid > * { min-width: 0; }
+.qr-row p, .stand-foot { overflow-wrap: anywhere; }
