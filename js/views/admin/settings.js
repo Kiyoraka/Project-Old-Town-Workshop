@@ -1,6 +1,7 @@
 // #/admin/settings — the workshop's own details (they print on every invoice), invoice numbering
 // and SST, where the WhatsApp invoice goes and what it says, the bays, the counter's check-in QR
-// stand, and Reset demo data (a second tap confirms; never a browser dialog).
+// stand, installing as an app, and Reset demo data (a second tap confirms; never a browser
+// dialog). One tab at a time, so each part fits a phone screen.
 
 import { html, raw, fmtRMTight, toast } from '../../ui.js';
 import { STATE, saveShop, saveSettings, saveBays, nextInvoiceNo, resetDemo } from '../../state.js';
@@ -12,6 +13,20 @@ import { adminPage } from './layout.js';
 import { installState } from '../../pwa.js';
 
 let confirmReset = false;
+let tab = 'workshop';
+
+const TABS = [
+  { id: 'workshop', label: 'Workshop', icon: 'wrench' },
+  { id: 'invoice', label: 'Invoice & tax', icon: 'receipt' },
+  { id: 'whatsapp', label: 'WhatsApp', icon: 'whatsapp' },
+  { id: 'bays', label: 'Bays', icon: 'lift' },
+  { id: 'qr', label: 'Counter QR', icon: 'qr' },
+  { id: 'app', label: 'App', icon: 'download' },
+  { id: 'demo', label: 'Demo data', icon: 'refresh' },
+];
+
+// The tab a card belongs to: only the open tab's card is shown.
+const pane = (id) => raw(`data-pane="${id}" role="tabpanel" aria-labelledby="set-tab-${id}" ${tab === id ? '' : 'hidden'}`);
 
 const text = (name, label, value, attrs = '') => html`
   <div class="field"><label for="set-${name}">${label}</label>
@@ -24,8 +39,14 @@ export const settingsPage = adminPage({
     const { shop, settings } = STATE;
     const sample = [...STATE.invoices].pop();
     return html`
-      <div class="settings-grid">
-        <form class="card stack" data-submit="shop">
+      <div class="settings-tabs" role="tablist" aria-label="Settings">
+        ${TABS.map((t) => html`
+          <button class="settings-tab" role="tab" id="set-tab-${t.id}" data-action="tab" data-tab="${t.id}" aria-selected="${tab === t.id}">
+            ${icon(t.icon, { size: 16 })}<span>${t.label}</span>
+          </button>`)}
+      </div>
+      <div class="settings-panes">
+        <form class="card stack" data-submit="shop" ${pane('workshop')}>
           <div class="card-head"><h2 class="sign-title">${icon('wrench', { size: 18 })} Workshop</h2><span class="spacer"></span><span class="muted small">prints on every invoice</span></div>
           ${text('name', 'Workshop name', shop.name)}
           ${text('tagline', 'Tagline', shop.tagline)}
@@ -41,7 +62,7 @@ export const settingsPage = adminPage({
           <button class="btn btn-primary" type="submit">${icon('check')} Save workshop</button>
         </form>
 
-        <form class="card stack" data-submit="invoice">
+        <form class="card stack" data-submit="invoice" ${pane('invoice')}>
           <div class="card-head"><h2 class="sign-title">${icon('receipt', { size: 18 })} Invoice and tax</h2></div>
           ${text('invoicePrefix', 'Invoice number prefix', settings.invoicePrefix, 'autocomplete="off"')}
           <p class="field-hint">Next invoice: <b class="mono">${nextInvoiceNo()}</b></p>
@@ -51,7 +72,7 @@ export const settingsPage = adminPage({
           <button class="btn btn-primary" type="submit">${icon('check')} Save invoice settings</button>
         </form>
 
-        <form class="card stack settings-wide" data-submit="whatsapp">
+        <form class="card stack" data-submit="whatsapp" ${pane('whatsapp')}>
           <div class="card-head"><h2 class="sign-title">${icon('whatsapp', { size: 18 })} Invoice to WhatsApp</h2></div>
           <div class="field">
             <span class="field-label">Send the invoice to</span>
@@ -74,7 +95,7 @@ export const settingsPage = adminPage({
           <button class="btn btn-primary" type="submit">${icon('check')} Save WhatsApp settings</button>
         </form>
 
-        <form class="card stack" data-submit="bays">
+        <form class="card stack" data-submit="bays" ${pane('bays')}>
           <div class="card-head"><h2 class="sign-title">${icon('lift', { size: 18 })} Bays</h2></div>
           ${STATE.bays.map((b) => html`
             <div class="grid-2">
@@ -84,7 +105,7 @@ export const settingsPage = adminPage({
           <button class="btn btn-primary" type="submit">${icon('check')} Save bays</button>
         </form>
 
-        <section class="card stack">
+        <section class="card stack" ${pane('qr')}>
           <div class="card-head"><h2 class="sign-title">${icon('qr', { size: 18 })} Counter check-in QR</h2></div>
           <div class="qr-row">
             <div class="qr">${qrSvg(absUrl('/checkin'), { label: 'Check-in QR code' })}</div>
@@ -93,7 +114,7 @@ export const settingsPage = adminPage({
           <a class="btn btn-outline" href="#/admin/checkin-stand">${icon('printer')} Open printable stand (A5)</a>
         </section>
 
-        <section class="card stack">
+        <section class="card stack" ${pane('app')}>
           <div class="card-head"><h2 class="sign-title">${icon('download', { size: 18 })} Install as an app</h2></div>
           <p class="muted small">On a phone the workshop opens full screen from its own icon, with the tab bar at the bottom, and keeps working without signal.</p>
           ${{
@@ -104,7 +125,7 @@ export const settingsPage = adminPage({
           }[installState()]}
         </section>
 
-        <section class="card stack danger-card">
+        <section class="card stack danger-card" ${pane('demo')}>
           <div class="card-head"><h2 class="sign-title">${icon('refresh', { size: 18 })} Demo data</h2></div>
           <p class="muted small">Everything lives in this browser. Reset brings back the sample workshop with today's bookings, jobs and invoices; it also resets on its own each new day.</p>
           <button class="btn ${confirmReset ? 'btn-primary' : 'btn-outline'}" data-action="reset">${confirmReset ? 'Tap again to reset everything' : 'Reset demo data'}</button>
@@ -140,6 +161,11 @@ export const settingsPage = adminPage({
     },
   },
   actions: {
+    tab(el) {
+      tab = el.dataset.tab;
+      confirmReset = false;
+      refresh({ force: true });
+    },
     reset() {
       if (!confirmReset) { confirmReset = true; refresh({ force: true }); return; }
       confirmReset = false;

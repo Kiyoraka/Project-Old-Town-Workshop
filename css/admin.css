@@ -379,8 +379,6 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
 .role li .icon { color: var(--st-ready); }
 
 /* ---------- settings ---------- */
-.settings-grid { display: grid; gap: 16px; }
-@media (min-width: 900px) { .settings-grid { grid-template-columns: 1fr 1fr; align-items: start; } .settings-wide { grid-row: span 2; } }
 .radio-list { display: grid; gap: 8px; }
 .radio-row { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1.5px solid var(--rule); border-radius: var(--radius-sm); background: #fff; cursor: pointer; }
 .radio-row:has(input:checked) { border-color: var(--patina); box-shadow: inset 0 0 0 1px var(--patina); }
@@ -412,5 +410,23 @@ body[data-surface="stand"] { background-color: var(--paper-2); }
 }
 
 /* Grid children never grow past the page: wide tables scroll inside their own wrapper. */
-.admin-main > *, .settings-grid > *, .dash-row > *, .job-grid > *, .co-grid > * { min-width: 0; }
+.admin-main > *, .settings-panes > *, .dash-row > *, .job-grid > *, .co-grid > * { min-width: 0; }
 .qr-row p, .stand-foot { overflow-wrap: anywhere; }
+
+/* ---------- settings tabs: one part at a time ---------- */
+.settings-tabs {
+  display: flex; gap: 6px; overflow-x: auto; padding: 4px; scrollbar-width: none;
+  background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius-md);
+}
+.settings-tabs::-webkit-scrollbar { display: none; }
+.settings-tab {
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  min-height: 42px; padding: 0 14px; border: 0; border-radius: var(--radius-sm);
+  background: transparent; color: var(--ink-soft); font-weight: 500; font-size: 0.9rem; cursor: pointer; white-space: nowrap;
+}
+.settings-tab:hover { background: var(--paper); color: var(--ink); }
+.settings-tab[aria-selected="true"] {
+  background: var(--patina); color: var(--on-brand);
+  box-shadow: inset 0 0 0 2px var(--patina), inset 0 0 0 3px rgba(255, 248, 236, 0.45);
+}
+.settings-tabs, .settings-panes { max-width: 760px; width: 100%; }
