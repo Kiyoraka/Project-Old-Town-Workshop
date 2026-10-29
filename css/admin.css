@@ -210,3 +210,39 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
 .rev-col.is-today .rev-bar { background: var(--rust); }
 .rev-amount { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); align-self: end; }
 .rev-day { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); }
+
+/* ---------- job board ---------- */
+.board-chips { display: none; margin-bottom: 12px; }
+.board { display: grid; grid-template-columns: repeat(5, minmax(200px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 6px; align-items: start; }
+.board-col { background: var(--paper-2); border-radius: var(--radius-md); padding: 10px; min-height: 160px; }
+.board-col-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.board-col-head b { font-family: var(--font-mono); }
+.board-col-head .muted { margin-left: auto; }
+.board-col-body { display: grid; gap: 10px; }
+.board-empty { text-align: center; color: var(--muted); font-size: 0.86rem; padding: 18px 0; margin: 0; border: 1.5px dashed var(--rule); border-radius: var(--radius-sm); }
+.job-card { background: #fff; border: 1px solid var(--rule); border-radius: var(--radius-sm); box-shadow: 0 2px 0 var(--rule); overflow: hidden; }
+.board-col[data-stage="ready"] .job-card { border-left: 4px solid var(--st-ready); }
+.board-col[data-stage="in-service"] .job-card { border-left: 4px solid var(--st-work); }
+.board-col[data-stage="inspecting"] .job-card { border-left: 4px solid var(--st-insp); }
+.board-col[data-stage="checked-in"] .job-card { border-left: 4px solid var(--st-in); }
+.job-card-link { display: grid; gap: 5px; padding: 10px 12px; color: inherit; }
+.job-card-link:hover { text-decoration: none; background: rgba(233, 223, 203, 0.35); }
+.job-card-top { display: flex; justify-content: space-between; gap: 6px; font-size: 0.8rem; font-weight: 700; }
+.job-card-top b { white-space: nowrap; }
+.job-card-car { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; }
+.job-card-what { font-weight: 500; font-size: 0.9rem; line-height: 1.3; }
+.job-card-meta { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--ink-soft); }
+.job-card-actions { padding: 0 8px 8px; }
+.job-card-actions .btn-ghost { width: 100%; justify-content: space-between; background: var(--paper); }
+
+@media (max-width: 767px) {
+  .board-chips { display: flex; }
+  .board-chips .chip { flex: 1; padding: 0 8px; }
+  .board { grid-template-columns: 1fr; overflow: visible; }
+  .board-col { display: none; }
+  .board[data-show="checked-in"] [data-stage="checked-in"],
+  .board[data-show="inspecting"] [data-stage="inspecting"],
+  .board[data-show="in-service"] [data-stage="in-service"],
+  .board[data-show="ready"] [data-stage="ready"],
+  .board[data-show="paid"] [data-stage="paid"] { display: block; }
+}

@@ -11,6 +11,7 @@ import { jobPage, trackPage } from './views/job.js';
 import { invoicePage } from './views/invoice.js';
 import { loginPage } from './views/login.js';
 import { dashboardPage } from './views/admin/dashboard.js';
+import { jobsPage } from './views/admin/jobs.js';
 
 addRoute('/', landing);
 addRoute('/book', bookPage);
@@ -22,6 +23,7 @@ addRoute('/job/:id', jobPage);
 addRoute('/invoice/:no', invoicePage);
 addRoute('/login', loginPage);
 addRoute('/admin', dashboardPage);
+addRoute('/admin/jobs', jobsPage);
 
 subscribe(() => refresh());
 startChannel();
