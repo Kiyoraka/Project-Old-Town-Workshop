@@ -276,3 +276,44 @@ a.bay-card:hover { text-decoration: none; box-shadow: var(--raised); }
 @media (min-width: 900px) { .job-foot { grid-template-columns: 1.5fr 1fr; } }
 .job-total { display: grid; gap: 6px; justify-items: end; text-align: right; }
 @media (max-width: 899px) { .job-total { justify-items: stretch; text-align: left; } }
+
+/* ---------- checkout ---------- */
+.co-grid { display: grid; gap: 16px; }
+@media (min-width: 900px) { .co-grid { grid-template-columns: 1.4fr 1fr; align-items: start; } }
+.co-side { display: grid; gap: 14px; border-top: 5px solid var(--rust); }
+@media (min-width: 900px) { .co-side { position: sticky; top: 84px; } }
+.co-discount { display: flex; gap: 8px; }
+.co-discount .chips { flex: none; flex-wrap: nowrap; }
+.co-discount .input { flex: 1; font-family: var(--font-mono); }
+.switch-row { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--paper); }
+.switch-row input { width: 20px; height: 20px; accent-color: var(--patina); margin-top: 2px; }
+.co-totals { margin: 0; display: grid; gap: 6px; padding: 12px 0; border-top: 1.5px dashed var(--rule); border-bottom: 1.5px dashed var(--rule); font-family: var(--font-mono); }
+.co-totals div { display: flex; justify-content: space-between; }
+.co-totals dd { margin: 0; }
+.co-total dt { font-weight: 700; }
+.co-total dd { font-family: var(--font-sign); font-size: 1.8rem; line-height: 1; }
+
+/* ---------- payment gateway sheet ---------- */
+.gateway .modal-head > div { display: grid; gap: 4px; justify-items: start; }
+.gw-amount { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--grease); color: var(--on-brand); }
+.gw-amount .kpi-label { color: rgba(255, 248, 236, 0.7); }
+.gw-amount b { font-family: var(--font-sign); font-size: 1.7rem; font-weight: 400; }
+.gw-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.gw-tab {
+  display: grid; justify-items: center; gap: 4px; padding: 10px 4px; cursor: pointer;
+  border: 1.5px solid var(--rule); border-radius: var(--radius-sm); background: #fff; font-size: 0.74rem; font-weight: 500; line-height: 1.2; text-align: center;
+}
+.gw-tab[aria-selected="true"] { border-color: var(--rust); background: rgba(181, 84, 28, 0.07); color: var(--rust-deep); box-shadow: inset 0 0 0 1px var(--rust); }
+.gw-pane { display: grid; gap: 10px; justify-items: stretch; text-align: center; }
+.gw-pane p { margin: 0; }
+.gw-qr { width: 190px; justify-self: center; }
+.gw-wait { display: inline-flex; justify-content: center; align-items: center; gap: 6px; color: var(--brass-deep); font-weight: 500; }
+.gw-wait .icon { animation: spin 1.2s linear infinite; }
+.gw-banks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.gw-terminal { justify-self: center; width: 180px; padding: 14px 12px 34px; border-radius: 18px; background: var(--grease); box-shadow: inset 0 -16px 0 #1F2225; }
+.gw-terminal-screen { display: grid; gap: 4px; padding: 14px 6px; border-radius: 6px; background: #CFE3C8; color: #1F3A1A; font-family: var(--font-mono); font-weight: 700; font-size: 1.2rem; }
+.gw-terminal-screen small { font-size: 0.6rem; letter-spacing: 0.12em; }
+.gw-change { font-family: var(--font-mono); font-size: 1.05rem; }
+.gw-processing { display: grid; justify-items: center; gap: 12px; padding: 28px 0; }
+.gw-spinner { width: 44px; height: 44px; border-radius: 50%; border: 4px solid var(--rule); border-top-color: var(--rust); animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }

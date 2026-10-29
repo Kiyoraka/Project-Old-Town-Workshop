@@ -13,6 +13,7 @@ import { loginPage } from './views/login.js';
 import { dashboardPage } from './views/admin/dashboard.js';
 import { jobsPage } from './views/admin/jobs.js';
 import { jobCardPage } from './views/admin/job-card.js';
+import { checkoutPage } from './views/admin/checkout.js';
 
 addRoute('/', landing);
 addRoute('/book', bookPage);
@@ -26,6 +27,7 @@ addRoute('/login', loginPage);
 addRoute('/admin', dashboardPage);
 addRoute('/admin/jobs', jobsPage);
 addRoute('/admin/job/:id', jobCardPage);
+addRoute('/admin/checkout/:id', checkoutPage);
 
 subscribe(() => refresh());
 startChannel();
