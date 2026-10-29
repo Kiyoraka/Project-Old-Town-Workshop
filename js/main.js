@@ -4,6 +4,9 @@
 import { addRoute, startRouter, refresh } from './router.js';
 import { subscribe } from './state.js';
 import { startChannel } from './channel.js';
+import { landing } from './views/landing.js';
+
+addRoute('/', landing);
 
 subscribe(() => refresh());
 startChannel();
